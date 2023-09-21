@@ -22,3 +22,6 @@ TipoDev - Front/Back/Full/UX-UI/Design
 
 /* Salvar tudo no GitHub */
 Estar na pasta do repositório
+
+/*Criar a string de conexão*/
+appsettings.json
