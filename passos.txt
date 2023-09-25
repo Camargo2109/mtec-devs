@@ -25,3 +25,14 @@ Estar na pasta do repositório
 
 /*Criar a string de conexão*/
 appsettings.json
+
+Criar a migração
+//testar se tem a ferramenta de migração
+dotnet ef
+
+//Instala no PC
+dotnet tool install --global dotnet-ef
+
+//Comandos para criar e aplicar as migrações
+dotnet ef migrations add criar-banco
+dotnet ef database update
