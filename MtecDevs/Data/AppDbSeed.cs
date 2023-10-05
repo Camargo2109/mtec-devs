@@ -68,12 +68,34 @@ public class AppDbSeed
                 LockoutEnabled = true
             }
         };
+        //Criptografar a senha 
+        foreach (var user in users)
+        {
+            PasswordHasher<IdentityUser> password = new();
+            user.PasswordHash = password.HashPassword(user, "@Etec123");
+        }
         builder.Entity<IdentityUser>().HasData(users);
-        //Criptografar a senha
 
         //Cria o usuário
+        List<Usuario> usuarios = new(){
+            new Usuario() {
+                UserId = users[0].Id,
+                Nome = "Gustavo Santos Buzacarini",
+                DataNascimento = DateTime.Parse("12/04/2006"),
+                Foto = "/img/usuarios/gustavo.jpg",
+                TipoDevId = 2
+            }
+        };
+        builder.Entity<Usuario>().HasData(usuarios);
 
         //Define o perfil do usuário criado
+        List<IdentityUserRole<string>> userRoles = new() {
+            new IdentityUserRole<string>() {
+                UserId = users[0].Id,
+                RoleId = perfis [0].Id
+            }
+        };
+        builder.Entity<IdentityUserRole<string>>().HasData(userRoles);
         #endregion
      }   
 }
