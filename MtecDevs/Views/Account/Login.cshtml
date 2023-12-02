@@ -4,15 +4,14 @@
     Layout = "~/Views/Shared/_LayoutAccount.cshtml";
 }
 
-<main class="container fluid p-4">
-    <form method="post">
+<main class="container-fluid p-4">
+    <form method="post" asp-action="Login" asp-controller="Account">
         <div class="text-center mb-4">
-           <img src="~/img/logo2.png" alt="Logo" width="350">
+            <img src="~/img/logo2.png" alt="Logo" width="350">
         </div>
-        
         <input type="hidden" asp-for="UrlRetorno">
-        <div class="text-danger" asp-validation-summary="ModelOnly" hidden></div>
-
+        <div asp-validation-summary="ModelOnly" class="text-danger" hidden></div>
+        
         <div class="mb-3">
             <label asp-for="Email" class="form-label"></label>
             <input asp-for="Email" class="form-control">
@@ -27,12 +26,12 @@
 
         <div class="mb-3 form-check">
             <input type="checkbox" asp-for="Lembrar" class="form-check-input">
-            <label for="" class="form-check-label">Manter Conectado</label>
+            <label asp-for="Lembrar" class="form-check-label"></label>
         </div>
 
         <button type="submit" class="w-100 btn btn-primary">Entrar</button>
 
-        <a asp-action="Forget" class="d-block text-center mt-3 text-decoration-none">Esqueceu sua Senha?</a>
+        <a asp-action="" class="d-block text-center mt-3 text-decoration-none">Esqueceu sua Senha?</a>
 
         <div class="separator">
             <div class="line"></div>
@@ -40,22 +39,23 @@
             <div class="line"></div>
         </div>
 
-        <a asp-action="Register" class="w-100 btn btn-success mt-1">Criar Conta</a>
+        <a asp-action="" class="w-100 btn btn-success mt-1">Criar Conta</a>
+
     </form>
 </main>
 
-@section Scripts{
+@section Scripts {
     <partial name="_ValidationScriptsPartial"></partial>
     <script>
         let mensagemErro = '';
         $('.validation-summary-errors ul li').each(function () {
             mensagemErro += $(this).text();
         });
-        if(mensagemErro != '') {
+        if(mensagemErro != ''){
             Swal.fire({
-                title: 'Acesso Negado',
+                title: "Acesso negado",
                 text: mensagemErro,
-                icon: 'error'
+                icon: "error"
             });
         }
     </script>

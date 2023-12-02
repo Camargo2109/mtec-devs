@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MtecDevs.Models;
 
+[Table("Usuario")]
 public class Usuario
 {
     [Key]
-    public string UserId {get; set;}
+    public string UserId { get; set; }
     [ForeignKey("UserId")]
-    public IdentityUser AccountUser {get; set;}
-
+    public IdentityUser AccountUser { get; set; }
 
     [Required(ErrorMessage = "Informe o Nome")]
     [StringLength(60, ErrorMessage = "O Nome deve possuir no máximo 60 caracteres")]
